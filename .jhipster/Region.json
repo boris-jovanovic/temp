@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "regionToVLan",
+            "otherEntityName": "vLan",
+            "otherEntityRelationshipName": "region"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "regionToPool",
+            "otherEntityName": "pool",
+            "otherEntityRelationshipName": "region"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170921130351",
+    "entityTableName": "region",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl"
+}

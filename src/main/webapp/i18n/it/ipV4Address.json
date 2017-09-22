@@ -1,0 +1,23 @@
+{
+    "ipamApp": {
+        "ipV4Address" : {
+            "home": {
+                "title": "IpV4Addresses",
+                "createLabel": "Genera un nuovo Ip V 4 Address",
+                "createOrEditLabel": "Genera o modifica un Ip V 4 Address"
+            },
+            "created": "&Egrave; stato generato un nuovo Ip V 4 Address con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Ip V 4 Address identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Ip V 4 Address con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Ip V 4 Address {{ id }}?"
+            },
+            "detail": {
+                "title": "Ip V 4 Address"
+            },
+            "ipV4Address": "Ip V 4 Address",
+            "vLan": "V Lan",
+            "pool": "Pool"
+        }
+    }
+}

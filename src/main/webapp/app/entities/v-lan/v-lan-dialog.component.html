@@ -1,0 +1,57 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVLanLabel" jhiTranslate="ipamApp.vLan.home.createOrEditLabel">Create or edit a V Lan</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!vLan.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="vLan.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ipamApp.vLan.vLanId" for="field_vLanId">V Lan Id</label>
+            <input type="text" class="form-control" name="vLanId" id="field_vLanId"
+                [(ngModel)]="vLan.vLanId" required />
+            <div [hidden]="!(editForm.controls.vLanId?.dirty && editForm.controls.vLanId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vLanId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ipamApp.vLan.vrf" for="field_vrf">Vrf</label>
+            <select class="form-control" id="field_vrf" name="vrf" [(ngModel)]="vLan.vrfId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="vrfOption.id" *ngFor="let vrfOption of vrfs; trackBy: trackVrfById">{{vrfOption.vrfId}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ipamApp.vLan.vLanLink" for="field_vLanLink">V Lan Link</label>
+            <select class="form-control" id="field_vLanLink" name="vLanLink" [(ngModel)]="vLan.vLanLinkId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="vLanLinkOption.id" *ngFor="let vLanLinkOption of vlanlinks; trackBy: trackVLanLinkById">{{vLanLinkOption.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ipamApp.vLan.region" for="field_region">Region</label>
+            <select class="form-control" id="field_region" name="region" [(ngModel)]="vLan.regionId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="regionOption.id" *ngFor="let regionOption of regions; trackBy: trackRegionById">{{regionOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,22 @@
+{
+    "ipamApp": {
+        "vrf" : {
+            "home": {
+                "title": "Vrfs",
+                "createLabel": "Vrf erstellen",
+                "createOrEditLabel": "Vrf erstellen oder bearbeiten"
+            },
+            "created": "Vrf erstellt mit ID {{ param }}",
+            "updated": "Vrf aktualisiert mit ID {{ param }}",
+            "deleted": "Vrf gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Vrf {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Vrf"
+            },
+            "vrfId": "Vrf Id",
+            "vrf": "Vrf"
+        }
+    }
+}

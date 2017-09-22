@@ -1,0 +1,37 @@
+
+<div *ngIf="ipV4Address">
+    <h2><span jhiTranslate="ipamApp.ipV4Address.detail.title">Ip V 4 Address</span> {{ipV4Address.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ipamApp.ipV4Address.ipV4Address">Ip V 4 Address</span></dt>
+        <dd>
+            <span>{{ipV4Address.ipV4Address}}</span>
+        </dd>
+        <dt><span jhiTranslate="ipamApp.ipV4Address.vLan">V Lan</span></dt>
+        <dd>
+            <div *ngIf="ipV4Address.vLanId">
+                <a [routerLink]="['/v-lan', ipV4Address.vLanId]">{{ipV4Address.vLanId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ipamApp.ipV4Address.pool">Pool</span></dt>
+        <dd>
+            <div *ngIf="ipV4Address.poolId">
+                <a [routerLink]="['/pool', ipV4Address.poolId]">{{ipV4Address.poolId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ip-v-4-address/'+ ipV4Address.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,23 @@
+{
+    "ipamApp": {
+        "pool" : {
+            "home": {
+                "title": "Pools",
+                "createLabel": "Créer un nouveau Pool",
+                "createOrEditLabel": "Créer ou éditer un Pool"
+            },
+            "created": "Un nouveau Pool a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Pool avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Pool avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Pool {{ id }} ?"
+            },
+            "detail": {
+                "title": "Pool"
+            },
+            "name": "Name",
+            "pool": "Pool",
+            "region": "Region"
+        }
+    }
+}

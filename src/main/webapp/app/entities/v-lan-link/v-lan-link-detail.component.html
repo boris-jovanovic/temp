@@ -1,0 +1,25 @@
+
+<div *ngIf="vLanLink">
+    <h2><span jhiTranslate="ipamApp.vLanLink.detail.title">V Lan Link</span> {{vLanLink.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ipamApp.vLanLink.name">Name</span></dt>
+        <dd>
+            <span>{{vLanLink.name}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'v-lan-link/'+ vLanLink.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

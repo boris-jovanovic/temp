@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span jhiTranslate="ipamApp.vLan.home.title">V Lans</span>
+        <button class="btn btn-primary float-right jh-create-entity create-v-lan" [routerLink]="['/', { outlets: { popup: ['v-lan-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ipamApp.vLan.home.createLabel">
+            Create new V Lan
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="vLans">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <!-- <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th> -->
+            <th jhiSortBy="vLanId"><span jhiTranslate="ipamApp.vLan.vLanId">V Lan Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vrfId"><span jhiTranslate="ipamApp.vLan.vrf">Vrf</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vLanLinkId"><span jhiTranslate="ipamApp.vLan.vLanLink">V Lan Link</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="regionId"><span jhiTranslate="ipamApp.vLan.region">Region</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let vLan of vLans ;trackBy: trackId">
+                <!-- <td><a [routerLink]="['../v-lan', vLan.id ]">{{vLan.id}}</a></td>
+                <td>{{vLan.vLanId}}</td> -->
+                <td>
+                    <div *ngIf="vLan.vrfId">
+                        <a [routerLink]="['../vrf', vLan.vrfId  ]" >{{vLan.vrfId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="vLan.vLanLinkId">
+                        <a [routerLink]="['../v-lan-link', vLan.vLanLinkId  ]" >{{vLan.vLanLinkId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="vLan.regionId">
+                        <a [routerLink]="['../region', vLan.regionId  ]" >{{vLan.regionId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../v-lan', vLan.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'v-lan/'+ vLan.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'v-lan/'+ vLan.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

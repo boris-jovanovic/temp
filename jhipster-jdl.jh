@@ -1,0 +1,48 @@
+entity Vrf {
+	vrfId String required
+}
+
+entity VLan {
+	vLanId String required
+}
+
+entity IpV4Address {
+	ipV4Address String required
+}
+
+entity Pool {
+	name String required
+}
+
+entity VLanLink {
+	name String required
+}
+
+entity Region {
+	name String
+}
+
+relationship OneToMany {
+	    
+    Vrf{vrf} to VLan,
+    
+    VLan{vLan} to IpV4Address,
+    
+    Region{regionToVLan} to VLan,
+    
+    Region{regionToPool} to Pool,
+    
+    Pool{pool} to IpV4Address,
+    
+    VLanLink{vLanLink} to VLan
+    
+}
+
+// Set pagination options
+paginate Region, Vrf, VLan, Pool with infinite-scroll
+paginate IpV4Address with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
+

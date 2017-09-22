@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "vrf",
+            "otherEntityName": "vLan",
+            "otherEntityRelationshipName": "vrf"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vrfId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170921130346",
+    "entityTableName": "vrf",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl"
+}

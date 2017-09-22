@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "vLanLink",
+            "otherEntityName": "vLan",
+            "otherEntityRelationshipName": "vLanLink"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170921130350",
+    "entityTableName": "v_lan_link",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

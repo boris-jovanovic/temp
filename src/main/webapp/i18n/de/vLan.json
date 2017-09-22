@@ -1,0 +1,25 @@
+{
+    "ipamApp": {
+        "vLan" : {
+            "home": {
+                "title": "V Lans",
+                "createLabel": "V Lan erstellen",
+                "createOrEditLabel": "V Lan erstellen oder bearbeiten"
+            },
+            "created": "V Lan erstellt mit ID {{ param }}",
+            "updated": "V Lan aktualisiert mit ID {{ param }}",
+            "deleted": "V Lan gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll V Lan {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "V Lan"
+            },
+            "vLanId": "V Lan Id",
+            "vrf": "Vrf",
+            "vLan": "V Lan",
+            "vLanLink": "V Lan Link",
+            "region": "Region"
+        }
+    }
+}

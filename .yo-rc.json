@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "jhipster.monolithic.angular",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "4.8.2",
+    "baseName": "IPAM",
+    "packageName": "jhipster.monolithic.angular",
+    "packageFolder": "jhipster/monolithic/angular",
+    "serverPort": "8080",
+    "authenticationType": "session",
+    "hibernateCache": "hazelcast",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "enableSwaggerCodegen": false,
+    "rememberMeKey": "9dbbfbd41f4155ab04ed23ecb8af4a6b203e33d3",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "fr",
+      "de",
+      "it"
+    ]
+  }
+}

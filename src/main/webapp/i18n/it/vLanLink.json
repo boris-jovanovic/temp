@@ -1,0 +1,22 @@
+{
+    "ipamApp": {
+        "vLanLink" : {
+            "home": {
+                "title": "VLanLinks",
+                "createLabel": "Genera un nuovo V Lan Link",
+                "createOrEditLabel": "Genera o modifica un V Lan Link"
+            },
+            "created": "&Egrave; stato generato un nuovo V Lan Link con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato V Lan Link identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato V Lan Link con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare V Lan Link {{ id }}?"
+            },
+            "detail": {
+                "title": "V Lan Link"
+            },
+            "name": "Name",
+            "vLanLink": "V Lan Link"
+        }
+    }
+}

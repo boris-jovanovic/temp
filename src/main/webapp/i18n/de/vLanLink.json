@@ -1,0 +1,22 @@
+{
+    "ipamApp": {
+        "vLanLink" : {
+            "home": {
+                "title": "V Lan Links",
+                "createLabel": "V Lan Link erstellen",
+                "createOrEditLabel": "V Lan Link erstellen oder bearbeiten"
+            },
+            "created": "V Lan Link erstellt mit ID {{ param }}",
+            "updated": "V Lan Link aktualisiert mit ID {{ param }}",
+            "deleted": "V Lan Link gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll V Lan Link {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "V Lan Link"
+            },
+            "name": "Name",
+            "vLanLink": "V Lan Link"
+        }
+    }
+}

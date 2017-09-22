@@ -1,0 +1,22 @@
+{
+    "ipamApp": {
+        "vrf" : {
+            "home": {
+                "title": "Vrfs",
+                "createLabel": "Genera un nuovo Vrf",
+                "createOrEditLabel": "Genera o modifica un Vrf"
+            },
+            "created": "&Egrave; stato generato un nuovo Vrf con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Vrf identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Vrf con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Vrf {{ id }}?"
+            },
+            "detail": {
+                "title": "Vrf"
+            },
+            "vrfId": "Vrf Id",
+            "vrf": "Vrf"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "ipamApp": {
+        "vLan" : {
+            "home": {
+                "title": "VLans",
+                "createLabel": "Genera un nuovo V Lan",
+                "createOrEditLabel": "Genera o modifica un V Lan"
+            },
+            "created": "&Egrave; stato generato un nuovo V Lan con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato V Lan identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato V Lan con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare V Lan {{ id }}?"
+            },
+            "detail": {
+                "title": "V Lan"
+            },
+            "vLanId": "V Lan Id",
+            "vrf": "Vrf",
+            "vLan": "V Lan",
+            "vLanLink": "V Lan Link",
+            "region": "Region"
+        }
+    }
+}

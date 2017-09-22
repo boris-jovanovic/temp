@@ -1,0 +1,43 @@
+
+<div *ngIf="vLan">
+    <h2><span jhiTranslate="ipamApp.vLan.detail.title">V Lan</span> {{vLan.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ipamApp.vLan.vLanId">V Lan Id</span></dt>
+        <dd>
+            <span>{{vLan.vLanId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ipamApp.vLan.vrf">Vrf</span></dt>
+        <dd>
+            <div *ngIf="vLan.vrfId">
+                <a [routerLink]="['/vrf', vLan.vrfId]">{{vLan.vrfId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ipamApp.vLan.vLanLink">V Lan Link</span></dt>
+        <dd>
+            <div *ngIf="vLan.vLanLinkId">
+                <a [routerLink]="['/v-lan-link', vLan.vLanLinkId]">{{vLan.vLanLinkId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ipamApp.vLan.region">Region</span></dt>
+        <dd>
+            <div *ngIf="vLan.regionId">
+                <a [routerLink]="['/region', vLan.regionId]">{{vLan.regionId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'v-lan/'+ vLan.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
