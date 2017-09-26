@@ -16,7 +16,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <!-- <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th> -->
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="vLanId"><span jhiTranslate="ipamApp.vLan.vLanId">V Lan Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="vrfId"><span jhiTranslate="ipamApp.vLan.vrf">Vrf</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="vLanLinkId"><span jhiTranslate="ipamApp.vLan.vLanLink">V Lan Link</span> <span class="fa fa-sort"></span></th>
@@ -26,8 +26,13 @@
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let vLan of vLans ;trackBy: trackId">
-                <!-- <td><a [routerLink]="['../v-lan', vLan.id ]">{{vLan.id}}</a></td>
-                <td>{{vLan.vLanId}}</td> -->
+                <td><a [routerLink]="['../v-lan', vLan.id ]">{{vLan.id}}</a></td>
+                <td>{{vLan.vLanId}}</td>
+                <!-- <td>
+                    <div *ngIf="vLan.vLanId">
+                        <a [routerLink]="['../vrf', vLan.vLanId  ]" >{{vLan.vLanId}}</a>
+                    </div>
+                </td> -->
                 <td>
                     <div *ngIf="vLan.vrfId">
                         <a [routerLink]="['../vrf', vLan.vrfId  ]" >{{vLan.vrfId}}</a>

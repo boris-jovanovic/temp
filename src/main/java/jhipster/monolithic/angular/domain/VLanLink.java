@@ -1,15 +1,22 @@
 package jhipster.monolithic.angular.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A VLanLink.
@@ -19,95 +26,93 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class VLanLink implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+	@SequenceGenerator(name = "sequenceGenerator")
+	private Long id;
 
-    @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+	@NotNull
+	@Column(name = "name", nullable = false)
+	private String name;
 
-    @OneToMany(mappedBy = "vLanLink")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<VLan> vLanLinks = new HashSet<>();
+	@OneToMany(mappedBy = "vLanLink")
+	// @JsonIgnore
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<VLan> vLanLinks = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
+	// jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(final Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public VLanLink name(String name) {
-        this.name = name;
-        return this;
-    }
+	public VLanLink name(final String name) {
+		this.name = name;
+		return this;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(final String name) {
+		this.name = name;
+	}
 
-    public Set<VLan> getVLanLinks() {
-        return vLanLinks;
-    }
+	public Set<VLan> getVLanLinks() {
+		return vLanLinks;
+	}
 
-    public VLanLink vLanLinks(Set<VLan> vLans) {
-        this.vLanLinks = vLans;
-        return this;
-    }
+	public VLanLink vLanLinks(final Set<VLan> vLans) {
+		vLanLinks = vLans;
+		return this;
+	}
 
-    public VLanLink addVLanLink(VLan vLan) {
-        this.vLanLinks.add(vLan);
-        vLan.setVLanLink(this);
-        return this;
-    }
+	public VLanLink addVLanLink(final VLan vLan) {
+		vLanLinks.add(vLan);
+		vLan.setVLanLink(this);
+		return this;
+	}
 
-    public VLanLink removeVLanLink(VLan vLan) {
-        this.vLanLinks.remove(vLan);
-        vLan.setVLanLink(null);
-        return this;
-    }
+	public VLanLink removeVLanLink(final VLan vLan) {
+		vLanLinks.remove(vLan);
+		vLan.setVLanLink(null);
+		return this;
+	}
 
-    public void setVLanLinks(Set<VLan> vLans) {
-        this.vLanLinks = vLans;
-    }
-    // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
+	public void setVLanLinks(final Set<VLan> vLans) {
+		vLanLinks = vLans;
+	}
+	// jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not
+	// remove
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        VLanLink vLanLink = (VLanLink) o;
-        if (vLanLink.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), vLanLink.getId());
-    }
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		final VLanLink vLanLink = (VLanLink) o;
+		if (vLanLink.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), vLanLink.getId());
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
 
-    @Override
-    public String toString() {
-        return "VLanLink{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            "}";
-    }
+	@Override
+	public String toString() {
+		return "VLanLink{" + "id=" + getId() + ", name='" + getName() + "'" + "}";
+	}
 }

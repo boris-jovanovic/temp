@@ -13,7 +13,7 @@ import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
     templateUrl: './v-lan-link.component.html'
 })
 export class VLanLinkComponent implements OnInit, OnDestroy {
-vLanLinks: VLanLink[];
+	vLanLinks: VLanLink[];
     currentAccount: any;
     eventSubscriber: Subscription;
 

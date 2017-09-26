@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-09-21T15:36:18+0200",
+    date = "2017-09-26T10:46:11+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.13.0.v20170516-1929, environment: Java 1.8.0_144 (Oracle Corporation)"
 )
 @Component
@@ -66,7 +66,7 @@ public class VLanMapperImpl implements VLanMapper {
         vLanDTO_.setRegionId( vLanRegionId( vLan ) );
         vLanDTO_.setVLanLinkId( vLanVLanLinkId( vLan ) );
         vLanDTO_.setId( vLan.getId() );
-        vLanDTO_.setvLanId( vLan.getvLanId() );
+        vLanDTO_.setVLanId( vLan.getVLanId() );
 
         return vLanDTO_;
     }
@@ -83,6 +83,7 @@ public class VLanMapperImpl implements VLanMapper {
         vLan_.setVLanLink( vLanLinkMapper.fromId( vLanDTO.getVLanLinkId() ) );
         vLan_.setRegion( regionMapper.fromId( vLanDTO.getRegionId() ) );
         vLan_.setId( vLanDTO.getId() );
+        vLan_.setVLanId( vLanDTO.getVLanId() );
 
         return vLan_;
     }

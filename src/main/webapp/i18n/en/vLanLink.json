@@ -16,7 +16,8 @@
                 "title": "V Lan Link"
             },
             "name": "Name",
-            "vLanLink": "V Lan Link"
+            "vLanLink": "V Lan Link",
+            "vLan": "V Lan"
         }
     }
 }

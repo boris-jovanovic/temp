@@ -9,6 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { VLanLink } from './v-lan-link.model';
 import { VLanLinkPopupService } from './v-lan-link-popup.service';
 import { VLanLinkService } from './v-lan-link.service';
+import { VLan, VLanService } from '../v-lan';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-v-lan-link-dialog',
@@ -19,16 +21,21 @@ export class VLanLinkDialogComponent implements OnInit {
     vLanLink: VLanLink;
     isSaving: boolean;
 
+	vLans: VLan[];
+	
     constructor(
         public activeModal: NgbActiveModal,
         private alertService: JhiAlertService,
         private vLanLinkService: VLanLinkService,
+        private vLanService: VLanService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.vLanService.query()
+        	.subscribe((res: ResponseWrapper) => { this.vLanLink.vLans = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +70,10 @@ export class VLanLinkDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.alertService.error(error.message, null, null);
+    }
+    
+    trackVLanById(index: number, item: VLan) {
+        return item.id;
     }
 }
 

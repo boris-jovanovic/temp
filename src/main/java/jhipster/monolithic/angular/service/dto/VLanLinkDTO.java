@@ -1,64 +1,74 @@
 package jhipster.monolithic.angular.service.dto;
 
-
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * A DTO for the VLanLink entity.
  */
 public class VLanLinkDTO implements Serializable {
 
-    private Long id;
+	private Long id;
 
-    @NotNull
-    private String name;
+	@NotNull
+	private String name;
 
-    public Long getId() {
-        return id;
-    }
+	private List<VLanDTO> vLans = new ArrayList<>();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(final Long id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setName(final String name) {
+		this.name = name;
+	}
 
-        VLanLinkDTO vLanLinkDTO = (VLanLinkDTO) o;
-        if(vLanLinkDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), vLanLinkDTO.getId());
-    }
+	public List<VLanDTO> getVLans() {
+		return vLans;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	@JsonProperty("vLans")
+	public void setVLans(final List<VLanDTO> vLans) {
+		this.vLans = vLans;
+	}
 
-    @Override
-    public String toString() {
-        return "VLanLinkDTO{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            "}";
-    }
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		final VLanLinkDTO vLanLinkDTO = (VLanLinkDTO) o;
+		if (vLanLinkDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), vLanLinkDTO.getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "VLanLinkDTO{" + "id=" + getId() + ", name='" + getName() + "'" + "}";
+	}
 }

@@ -31,13 +31,14 @@
                 <option [ngValue]="vrfOption.id" *ngFor="let vrfOption of vrfs; trackBy: trackVrfById">{{vrfOption.vrfId}}</option>
             </select>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label class="form-control-label" jhiTranslate="ipamApp.vLan.vLanLink" for="field_vLanLink">V Lan Link</label>
             <select class="form-control" id="field_vLanLink" name="vLanLink" [(ngModel)]="vLan.vLanLinkId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="vLanLinkOption.id" *ngFor="let vLanLinkOption of vlanlinks; trackBy: trackVLanLinkById">{{vLanLinkOption.name}}</option>
             </select>
         </div>
+         -->
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ipamApp.vLan.region" for="field_region">Region</label>
             <select class="form-control" id="field_region" name="region" [(ngModel)]="vLan.regionId" >

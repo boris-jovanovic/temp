@@ -8,6 +8,7 @@ export class VLan implements BaseEntity {
         public vLans?: BaseEntity[],
         public vLanLinkId?: number,
         public regionId?: number,
+        public checked?: boolean
     ) {
     }
 }

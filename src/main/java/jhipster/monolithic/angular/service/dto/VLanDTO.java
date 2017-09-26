@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * A DTO for the VLan entity.
  */
@@ -21,6 +23,8 @@ public class VLanDTO implements Serializable {
 
 	private Long regionId;
 
+	private boolean checked;
+
 	public Long getId() {
 		return id;
 	}
@@ -33,7 +37,8 @@ public class VLanDTO implements Serializable {
 		return vLanId;
 	}
 
-	public void setvLanId(final String vLanId) {
+	@JsonProperty("vLanId")
+	public void setVLanId(final String vLanId) {
 		this.vLanId = vLanId;
 	}
 
@@ -59,6 +64,14 @@ public class VLanDTO implements Serializable {
 
 	public void setRegionId(final Long regionId) {
 		this.regionId = regionId;
+	}
+
+	public Boolean getChecked() {
+		return checked;
+	}
+
+	public void setChecked(final Boolean checked) {
+		this.checked = checked;
 	}
 
 	@Override

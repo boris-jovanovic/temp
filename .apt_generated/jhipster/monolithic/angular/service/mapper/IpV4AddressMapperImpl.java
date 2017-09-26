@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-09-21T15:36:19+0200",
+    date = "2017-09-26T10:35:16+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.13.0.v20170516-1929, environment: Java 1.8.0_144 (Oracle Corporation)"
 )
 @Component
@@ -24,28 +24,28 @@ public class IpV4AddressMapperImpl implements IpV4AddressMapper {
     private PoolMapper poolMapper;
 
     @Override
-    public List<IpV4AddressDTO> toDto(List<IpV4Address> arg0) {
-        if ( arg0 == null ) {
+    public List<IpV4Address> toEntity(List<IpV4AddressDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<IpV4AddressDTO> list = new ArrayList<IpV4AddressDTO>();
-        for ( IpV4Address ipV4Address : arg0 ) {
-            list.add( toDto( ipV4Address ) );
+        List<IpV4Address> list = new ArrayList<IpV4Address>();
+        for ( IpV4AddressDTO ipV4AddressDTO : dtoList ) {
+            list.add( toEntity( ipV4AddressDTO ) );
         }
 
         return list;
     }
 
     @Override
-    public List<IpV4Address> toEntity(List<IpV4AddressDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<IpV4AddressDTO> toDto(List<IpV4Address> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<IpV4Address> list = new ArrayList<IpV4Address>();
-        for ( IpV4AddressDTO ipV4AddressDTO : arg0 ) {
-            list.add( toEntity( ipV4AddressDTO ) );
+        List<IpV4AddressDTO> list = new ArrayList<IpV4AddressDTO>();
+        for ( IpV4Address ipV4Address : entityList ) {
+            list.add( toDto( ipV4Address ) );
         }
 
         return list;
