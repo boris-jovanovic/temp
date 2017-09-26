@@ -24,6 +24,9 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="subnet" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
 
             <column name="region_id" type="bigint">
                 <constraints nullable="true" />

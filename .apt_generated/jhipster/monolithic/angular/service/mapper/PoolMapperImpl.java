@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-09-26T10:35:16+0200",
+    date = "2017-09-26T15:09:15+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.13.0.v20170516-1929, environment: Java 1.8.0_144 (Oracle Corporation)"
 )
 @Component
@@ -21,28 +21,28 @@ public class PoolMapperImpl implements PoolMapper {
     private RegionMapper regionMapper;
 
     @Override
-    public List<Pool> toEntity(List<PoolDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<PoolDTO> toDto(List<Pool> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Pool> list = new ArrayList<Pool>();
-        for ( PoolDTO poolDTO : dtoList ) {
-            list.add( toEntity( poolDTO ) );
+        List<PoolDTO> list = new ArrayList<PoolDTO>();
+        for ( Pool pool : arg0 ) {
+            list.add( toDto( pool ) );
         }
 
         return list;
     }
 
     @Override
-    public List<PoolDTO> toDto(List<Pool> entityList) {
-        if ( entityList == null ) {
+    public List<Pool> toEntity(List<PoolDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<PoolDTO> list = new ArrayList<PoolDTO>();
-        for ( Pool pool : entityList ) {
-            list.add( toDto( pool ) );
+        List<Pool> list = new ArrayList<Pool>();
+        for ( PoolDTO poolDTO : arg0 ) {
+            list.add( toEntity( poolDTO ) );
         }
 
         return list;
@@ -59,6 +59,7 @@ public class PoolMapperImpl implements PoolMapper {
         poolDTO_.setRegionId( poolRegionId( pool ) );
         poolDTO_.setId( pool.getId() );
         poolDTO_.setName( pool.getName() );
+        poolDTO_.setSubnet( pool.getSubnet() );
 
         return poolDTO_;
     }
@@ -74,6 +75,7 @@ public class PoolMapperImpl implements PoolMapper {
         pool_.setRegion( regionMapper.fromId( poolDTO.getRegionId() ) );
         pool_.setId( poolDTO.getId() );
         pool_.setName( poolDTO.getName() );
+        pool_.setSubnet( poolDTO.getSubnet() );
 
         return pool_;
     }

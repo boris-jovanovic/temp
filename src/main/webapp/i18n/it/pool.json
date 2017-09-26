@@ -17,6 +17,7 @@
             },
             "name": "Name",
             "pool": "Pool",
+            "subnet": "Subnet",
             "region": "Region"
         }
     }

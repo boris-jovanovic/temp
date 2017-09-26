@@ -16,6 +16,7 @@
                 "title": "Pool"
             },
             "name": "Name",
+            "subnet": "Subnet",
             "pool": "Pool",
             "region": "Region"
         }

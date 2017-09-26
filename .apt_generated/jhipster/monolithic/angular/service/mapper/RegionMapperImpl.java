@@ -9,49 +9,49 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-09-26T10:35:16+0200",
+    date = "2017-09-26T15:06:52+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.13.0.v20170516-1929, environment: Java 1.8.0_144 (Oracle Corporation)"
 )
 @Component
 public class RegionMapperImpl implements RegionMapper {
 
     @Override
-    public RegionDTO toDto(Region entity) {
-        if ( entity == null ) {
+    public RegionDTO toDto(Region arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         RegionDTO regionDTO = new RegionDTO();
 
-        regionDTO.setId( entity.getId() );
-        regionDTO.setName( entity.getName() );
+        regionDTO.setId( arg0.getId() );
+        regionDTO.setName( arg0.getName() );
 
         return regionDTO;
     }
 
     @Override
-    public List<Region> toEntity(List<RegionDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<RegionDTO> toDto(List<Region> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Region> list = new ArrayList<Region>();
-        for ( RegionDTO regionDTO : dtoList ) {
-            list.add( toEntity( regionDTO ) );
+        List<RegionDTO> list = new ArrayList<RegionDTO>();
+        for ( Region region : arg0 ) {
+            list.add( toDto( region ) );
         }
 
         return list;
     }
 
     @Override
-    public List<RegionDTO> toDto(List<Region> entityList) {
-        if ( entityList == null ) {
+    public List<Region> toEntity(List<RegionDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<RegionDTO> list = new ArrayList<RegionDTO>();
-        for ( Region region : entityList ) {
-            list.add( toDto( region ) );
+        List<Region> list = new ArrayList<Region>();
+        for ( RegionDTO regionDTO : arg0 ) {
+            list.add( toEntity( regionDTO ) );
         }
 
         return list;

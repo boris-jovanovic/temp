@@ -18,6 +18,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="name"><span jhiTranslate="ipamApp.pool.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="subnet"><span jhiTranslate="ipamApp.pool.subnet">Subnet</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="regionId"><span jhiTranslate="ipamApp.pool.region">Region</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -26,6 +27,7 @@
             <tr *ngFor="let pool of pools ;trackBy: trackId">
                 <td><a [routerLink]="['../pool', pool.id ]">{{pool.id}}</a></td>
                 <td>{{pool.name}}</td>
+                <td>{{pool.subnet}}</td>
                 <td>
                     <div *ngIf="pool.regionId">
                         <a [routerLink]="['../region', pool.regionId  ]" >{{pool.regionId}}</a>
