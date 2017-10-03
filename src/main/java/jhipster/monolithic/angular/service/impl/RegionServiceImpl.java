@@ -1,7 +1,7 @@
 package jhipster.monolithic.angular.service.impl;
 
 import jhipster.monolithic.angular.service.RegionService;
-import jhipster.monolithic.angular.domain.Region;
+import jhipster.monolithic.angular.domain.IpRegion;
 import jhipster.monolithic.angular.repository.RegionRepository;
 import jhipster.monolithic.angular.service.dto.RegionDTO;
 import jhipster.monolithic.angular.service.mapper.RegionMapper;
@@ -40,7 +40,7 @@ public class RegionServiceImpl implements RegionService{
     @Override
     public RegionDTO save(RegionDTO regionDTO) {
         log.debug("Request to save Region : {}", regionDTO);
-        Region region = regionMapper.toEntity(regionDTO);
+        IpRegion region = regionMapper.toEntity(regionDTO);
         region = regionRepository.save(region);
         return regionMapper.toDto(region);
     }
@@ -69,7 +69,7 @@ public class RegionServiceImpl implements RegionService{
     @Transactional(readOnly = true)
     public RegionDTO findOne(Long id) {
         log.debug("Request to get Region : {}", id);
-        Region region = regionRepository.findOne(id);
+        IpRegion region = regionRepository.findOne(id);
         return regionMapper.toDto(region);
     }
 

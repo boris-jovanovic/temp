@@ -3,7 +3,7 @@ package jhipster.monolithic.angular.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
-import jhipster.monolithic.angular.domain.Region;
+import jhipster.monolithic.angular.domain.IpRegion;
 import jhipster.monolithic.angular.service.dto.RegionDTO;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class RegionMapperImpl implements RegionMapper {
 
     @Override
-    public RegionDTO toDto(Region arg0) {
+    public RegionDTO toDto(IpRegion arg0) {
         if ( arg0 == null ) {
             return null;
         }
@@ -30,13 +30,13 @@ public class RegionMapperImpl implements RegionMapper {
     }
 
     @Override
-    public List<RegionDTO> toDto(List<Region> arg0) {
+    public List<RegionDTO> toDto(List<IpRegion> arg0) {
         if ( arg0 == null ) {
             return null;
         }
 
         List<RegionDTO> list = new ArrayList<RegionDTO>();
-        for ( Region region : arg0 ) {
+        for ( IpRegion region : arg0 ) {
             list.add( toDto( region ) );
         }
 
@@ -44,12 +44,12 @@ public class RegionMapperImpl implements RegionMapper {
     }
 
     @Override
-    public List<Region> toEntity(List<RegionDTO> arg0) {
+    public List<IpRegion> toEntity(List<RegionDTO> arg0) {
         if ( arg0 == null ) {
             return null;
         }
 
-        List<Region> list = new ArrayList<Region>();
+        List<IpRegion> list = new ArrayList<IpRegion>();
         for ( RegionDTO regionDTO : arg0 ) {
             list.add( toEntity( regionDTO ) );
         }
@@ -58,12 +58,12 @@ public class RegionMapperImpl implements RegionMapper {
     }
 
     @Override
-    public Region toEntity(RegionDTO regionDTO) {
+    public IpRegion toEntity(RegionDTO regionDTO) {
         if ( regionDTO == null ) {
             return null;
         }
 
-        Region region_ = new Region();
+        IpRegion region_ = new IpRegion();
 
         region_.setId( regionDTO.getId() );
         region_.setName( regionDTO.getName() );

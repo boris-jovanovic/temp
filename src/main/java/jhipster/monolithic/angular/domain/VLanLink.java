@@ -5,14 +5,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
@@ -37,9 +30,10 @@ public class VLanLink implements Serializable {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "vLanLink")
+	@OneToMany
 	// @JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	@JoinColumn(name="v_lan_link_id")
 	private Set<VLan> vLanLinks = new HashSet<>();
 
 	// jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
@@ -75,13 +69,11 @@ public class VLanLink implements Serializable {
 
 	public VLanLink addVLanLink(final VLan vLan) {
 		vLanLinks.add(vLan);
-		vLan.setVLanLink(this);
 		return this;
 	}
 
 	public VLanLink removeVLanLink(final VLan vLan) {
 		vLanLinks.remove(vLan);
-		vLan.setVLanLink(null);
 		return this;
 	}
 

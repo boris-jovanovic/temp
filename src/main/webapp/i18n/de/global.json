@@ -13,6 +13,7 @@
                 "pool": "Pool",
                 "vLanLink": "V Lan Link",
                 "region": "Region",
+                "l2Domain": "L2 Domain",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

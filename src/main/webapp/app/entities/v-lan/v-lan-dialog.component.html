@@ -40,10 +40,10 @@
         </div>
          -->
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ipamApp.vLan.region" for="field_region">Region</label>
-            <select class="form-control" id="field_region" name="region" [(ngModel)]="vLan.regionId" >
+            <label class="form-control-label" jhiTranslate="ipamApp.vLan.l2Domain" for="field_l2-domain">L2 Domain</label>
+            <select class="form-control" id="field_l2-domain" name="l2-domain" [(ngModel)]="vLan.domainId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="regionOption.id" *ngFor="let regionOption of regions; trackBy: trackRegionById">{{regionOption.name}}</option>
+                <option [ngValue]="l2DomainOption.id" *ngFor="let l2DomainOption of l2Domains; trackBy: trackL2DomainById">{{l2DomainOption.name}}</option>
             </select>
         </div>
     </div>

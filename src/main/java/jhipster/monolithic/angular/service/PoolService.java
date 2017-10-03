@@ -1,6 +1,6 @@
 package jhipster.monolithic.angular.service;
 
-import jhipster.monolithic.angular.service.dto.PoolDTO;
+import jhipster.monolithic.angular.service.dto.IpPoolDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,7 +15,7 @@ public interface PoolService {
      * @param poolDTO the entity to save
      * @return the persisted entity
      */
-    PoolDTO save(PoolDTO poolDTO);
+    IpPoolDTO save(IpPoolDTO poolDTO);
 
     /**
      *  Get all the pools.
@@ -23,7 +23,7 @@ public interface PoolService {
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    Page<PoolDTO> findAll(Pageable pageable);
+    Page<IpPoolDTO> findAll(Pageable pageable);
 
     /**
      *  Get the "id" pool.
@@ -31,7 +31,7 @@ public interface PoolService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    PoolDTO findOne(Long id);
+    IpPoolDTO findOne(Long id);
 
     /**
      *  Delete the "id" pool.

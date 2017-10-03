@@ -20,10 +20,10 @@
                 <a [routerLink]="['/v-lan-link', vLan.vLanLinkId]">{{vLan.vLanLinkId}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="ipamApp.vLan.region">Region</span></dt>
+        <dt><span jhiTranslate="ipamApp.vLan.l2-domain">L2 Domain</span></dt>
         <dd>
-            <div *ngIf="vLan.regionId">
-                <a [routerLink]="['/region', vLan.regionId]">{{vLan.regionId}}</a>
+            <div *ngIf="vLan.domainId">
+                <a [routerLink]="['/l2-domain', vLan.domainId]">{{vLan.domainId}}</a>
             </div>
         </dd>
     </dl>

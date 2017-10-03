@@ -3,10 +3,8 @@ package jhipster.monolithic.angular.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
-import jhipster.monolithic.angular.domain.Region;
-import jhipster.monolithic.angular.domain.VLan;
-import jhipster.monolithic.angular.domain.VLanLink;
-import jhipster.monolithic.angular.domain.Vrf;
+
+import jhipster.monolithic.angular.domain.*;
 import jhipster.monolithic.angular.service.dto.VLanDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,7 +22,7 @@ public class VLanMapperImpl implements VLanMapper {
     @Autowired
     private VLanLinkMapper vLanLinkMapper;
     @Autowired
-    private RegionMapper regionMapper;
+    private L2DomainMapper l2DomainMapper;
 
     @Override
     public List<VLanDTO> toDto(List<VLan> arg0) {
@@ -63,7 +61,7 @@ public class VLanMapperImpl implements VLanMapper {
         VLanDTO vLanDTO_ = new VLanDTO();
 
         vLanDTO_.setVrfId( vLanVrfId( vLan ) );
-        vLanDTO_.setRegionId( vLanRegionId( vLan ) );
+        vLanDTO_.setDomainId( vLanDomainId( vLan ) );
         vLanDTO_.setVLanLinkId( vLanVLanLinkId( vLan ) );
         vLanDTO_.setId( vLan.getId() );
         vLanDTO_.setVLanId( vLan.getVLanId() );
@@ -81,7 +79,7 @@ public class VLanMapperImpl implements VLanMapper {
 
         vLan_.setVrf( vrfMapper.fromId( vLanDTO.getVrfId() ) );
         vLan_.setVLanLink( vLanLinkMapper.fromId( vLanDTO.getVLanLinkId() ) );
-        vLan_.setRegion( regionMapper.fromId( vLanDTO.getRegionId() ) );
+        vLan_.setDomain( l2DomainMapper.fromId( vLanDTO.getDomainId() ) );
         vLan_.setId( vLanDTO.getId() );
         vLan_.setVLanId( vLanDTO.getVLanId() );
 
@@ -104,16 +102,16 @@ public class VLanMapperImpl implements VLanMapper {
         return id;
     }
 
-    private Long vLanRegionId(VLan vLan) {
+    private Long vLanDomainId(VLan vLan) {
 
         if ( vLan == null ) {
             return null;
         }
-        Region region = vLan.getRegion();
-        if ( region == null ) {
+        L2Domain domain = vLan.getDomain();
+        if ( domain == null ) {
             return null;
         }
-        Long id = region.getId();
+        Long id = domain.getId();
         if ( id == null ) {
             return null;
         }

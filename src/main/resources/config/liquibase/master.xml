@@ -16,4 +16,7 @@
     <include file="config/liquibase/changelog/20170921130348_added_entity_constraints_IpV4Address.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170921130349_added_entity_constraints_Pool.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    
+    <include file="config/liquibase/changelog/20170928_rename_tables.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170928_added_L2Domain.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

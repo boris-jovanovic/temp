@@ -10,9 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -20,12 +22,12 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * A Region.
+ * A Pool.
  */
 @Entity
-@Table(name = "region")
+@Table(name = "ip_pool")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Region implements Serializable {
+public class IpPool implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,18 +36,21 @@ public class Region implements Serializable {
 	@SequenceGenerator(name = "sequenceGenerator")
 	private Long id;
 
-	@Column(name = "name")
+	@NotNull
+	@Column(name = "name", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "region")
-	@JsonIgnore
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private Set<VLan> vLans = new HashSet<>();
+	@NotNull
+	@Column(name = "subnet", nullable = false)
+	private String subnet;
 
-	@OneToMany(mappedBy = "region")
+	@OneToMany(mappedBy = "pool")
 	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private Set<Pool> pools = new HashSet<>();
+	private Set<IpV4Address> ipV4Addresses = new HashSet<>();
+
+	@ManyToOne
+	private IpRegion region;
 
 	// jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
 	public Long getId() {
@@ -60,7 +65,7 @@ public class Region implements Serializable {
 		return name;
 	}
 
-	public Region name(final String name) {
+	public IpPool name(final String name) {
 		this.name = name;
 		return this;
 	}
@@ -69,57 +74,53 @@ public class Region implements Serializable {
 		this.name = name;
 	}
 
-	public Set<VLan> getVLans() {
-		return vLans;
+	public Set<IpV4Address> getIpV4Addresses() {
+		return ipV4Addresses;
 	}
 
-	public Region vLans(final Set<VLan> vLans) {
-		this.vLans = vLans;
+	public IpPool ipv4Addresses(final Set<IpV4Address> ipV4Addresses) {
+		this.ipV4Addresses = ipV4Addresses;
 		return this;
 	}
 
-	public Region addVLan(final VLan vLan) {
-		vLans.add(vLan);
-		vLan.setRegion(this);
+	public IpPool addIpV4Address(final IpV4Address ipV4Address) {
+		ipV4Addresses.add(ipV4Address);
+		ipV4Address.setPool(this);
 		return this;
 	}
 
-	public Region removeVLan(final VLan vLan) {
-		vLans.remove(vLan);
-		vLan.setRegion(null);
+	public IpPool removePool(final IpV4Address ipV4Address) {
+		ipV4Addresses.remove(ipV4Address);
+		ipV4Address.setPool(null);
 		return this;
 	}
 
-	public void setVLans(final Set<VLan> vLans) {
-		this.vLans = vLans;
+	public void setPools(final Set<IpV4Address> ipV4Addresses) {
+		this.ipV4Addresses = ipV4Addresses;
 	}
 
-	public Set<Pool> gePools() {
-		return pools;
+	public IpRegion getRegion() {
+		return region;
 	}
 
-	public Region pools(final Set<Pool> pools) {
-		this.pools = pools;
+	public IpPool region(final IpRegion region) {
+		this.region = region;
 		return this;
 	}
 
-	public Region addPool(final Pool pool) {
-		pools.add(pool);
-		pool.setRegion(this);
-		return this;
-	}
-
-	public Region removePool(final Pool pool) {
-		pools.remove(pool);
-		pool.setRegion(null);
-		return this;
-	}
-
-	public void setPools(final Set<Pool> pools) {
-		this.pools = pools;
+	public void setRegion(final IpRegion region) {
+		this.region = region;
 	}
 	// jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not
 	// remove
+
+	public String getSubnet() {
+		return subnet;
+	}
+
+	public void setSubnet(final String subnet) {
+		this.subnet = subnet;
+	}
 
 	@Override
 	public boolean equals(final Object o) {
@@ -129,11 +130,11 @@ public class Region implements Serializable {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		final Region region = (Region) o;
-		if (region.getId() == null || getId() == null) {
+		final IpPool pool = (IpPool) o;
+		if (pool.getId() == null || getId() == null) {
 			return false;
 		}
-		return Objects.equals(getId(), region.getId());
+		return Objects.equals(getId(), pool.getId());
 	}
 
 	@Override
@@ -143,6 +144,6 @@ public class Region implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Region{" + "id=" + getId() + ", name='" + getName() + "'" + "}";
+		return "Pool{" + "id=" + getId() + ", name='" + getName() + "'" + "}";
 	}
 }

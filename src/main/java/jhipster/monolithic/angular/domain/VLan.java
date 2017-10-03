@@ -5,15 +5,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
@@ -49,10 +41,11 @@ public class VLan implements Serializable {
 	private Set<IpV4Address> vLans = new HashSet<>();
 
 	@ManyToOne
+	@JoinColumn(name="v_lan_link_id", updatable=false, insertable=false)
 	private VLanLink vLanLink;
 
 	@ManyToOne
-	private Region region;
+	private L2Domain domain;
 
 	// jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
 	public Long getId() {
@@ -127,17 +120,17 @@ public class VLan implements Serializable {
 		this.vLanLink = vLanLink;
 	}
 
-	public Region getRegion() {
-		return region;
+	public L2Domain getDomain() {
+		return domain;
 	}
 
-	public VLan region(final Region region) {
-		this.region = region;
+	public VLan domain(final L2Domain domain) {
+		this.domain = domain;
 		return this;
 	}
 
-	public void setRegion(final Region region) {
-		this.region = region;
+	public void setDomain(final L2Domain domain) {
+		this.domain = domain;
 	}
 	// jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not
 	// remove

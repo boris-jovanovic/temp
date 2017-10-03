@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity VLan.
+    -->
+    <changeSet id="20170928-1" author="amodric">
+        
+		<dropForeignKeyConstraint baseTableName="v_lan" constraintName="fk_vlan_region_id"/>
+		
+		<dropForeignKeyConstraint baseTableName="ip_v_4_address" constraintName="fk_ipv4address_pool_id"/>
+		
+		<dropForeignKeyConstraint baseTableName="pool" constraintName="fk_pool_region_id"/>
+		
+		<renameTable newTableName="ip_region" oldTableName="region"/>
+		<renameTable newTableName="ip_pool" oldTableName="pool"/>
+		
+		<addForeignKeyConstraint baseColumnNames="region_id"
+                                 baseTableName="ip_pool"
+                                 constraintName="fk_ip_pool_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ip_region"/>
+		
+		<addForeignKeyConstraint baseColumnNames="pool_id"
+                                 baseTableName="ip_v_4_address"
+                                 constraintName="fk_ipv4address_pool_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ip_pool"/>
+		
+        <addForeignKeyConstraint baseColumnNames="region_id"
+                                 baseTableName="v_lan"
+                                 constraintName="fk_vlan_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ip_region"/>
+
+    </changeSet>
+</databaseChangeLog>

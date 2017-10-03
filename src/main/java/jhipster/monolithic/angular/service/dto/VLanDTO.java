@@ -21,7 +21,7 @@ public class VLanDTO implements Serializable {
 
 	private Long vLanLinkId;
 
-	private Long regionId;
+	private Long domainId;
 
 	private boolean checked;
 
@@ -58,12 +58,12 @@ public class VLanDTO implements Serializable {
 		this.vLanLinkId = vLanLinkId;
 	}
 
-	public Long getRegionId() {
-		return regionId;
+	public Long getDomainId() {
+		return domainId;
 	}
 
-	public void setRegionId(final Long regionId) {
-		this.regionId = regionId;
+	public void setDomainId(final Long domainId) {
+		this.domainId = domainId;
 	}
 
 	public Boolean getChecked() {

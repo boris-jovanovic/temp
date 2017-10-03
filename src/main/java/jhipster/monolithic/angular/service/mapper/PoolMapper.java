@@ -1,7 +1,7 @@
 package jhipster.monolithic.angular.service.mapper;
 
 import jhipster.monolithic.angular.domain.*;
-import jhipster.monolithic.angular.service.dto.PoolDTO;
+import jhipster.monolithic.angular.service.dto.IpPoolDTO;
 
 import org.mapstruct.*;
 
@@ -9,19 +9,19 @@ import org.mapstruct.*;
  * Mapper for the entity Pool and its DTO PoolDTO.
  */
 @Mapper(componentModel = "spring", uses = {RegionMapper.class, })
-public interface PoolMapper extends EntityMapper <PoolDTO, Pool> {
+public interface PoolMapper extends EntityMapper <IpPoolDTO, IpPool> {
 
     @Mapping(source = "region.id", target = "regionId")
-    PoolDTO toDto(Pool pool); 
+    IpPoolDTO toDto(IpPool pool); 
     @Mapping(target = "pools", ignore = true)
 
     @Mapping(source = "regionId", target = "region")
-    Pool toEntity(PoolDTO poolDTO); 
-    default Pool fromId(Long id) {
+    IpPool toEntity(IpPoolDTO poolDTO); 
+    default IpPool fromId(Long id) {
         if (id == null) {
             return null;
         }
-        Pool pool = new Pool();
+        IpPool pool = new IpPool();
         pool.setId(id);
         return pool;
     }

@@ -31,7 +31,7 @@ public class IpV4Address implements Serializable {
     private VLan vLan;
 
     @ManyToOne
-    private Pool pool;
+    private IpPool pool;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
@@ -68,16 +68,16 @@ public class IpV4Address implements Serializable {
         this.vLan = vLan;
     }
 
-    public Pool getPool() {
+    public IpPool getPool() {
         return pool;
     }
 
-    public IpV4Address pool(Pool pool) {
+    public IpV4Address pool(IpPool pool) {
         this.pool = pool;
         return this;
     }
 
-    public void setPool(Pool pool) {
+    public void setPool(IpPool pool) {
         this.pool = pool;
     }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove

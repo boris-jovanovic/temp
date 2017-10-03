@@ -2,10 +2,10 @@ package jhipster.monolithic.angular.web.rest;
 
 import jhipster.monolithic.angular.IpamApp;
 
-import jhipster.monolithic.angular.domain.Pool;
+import jhipster.monolithic.angular.domain.IpPool;
 import jhipster.monolithic.angular.repository.PoolRepository;
 import jhipster.monolithic.angular.service.PoolService;
-import jhipster.monolithic.angular.service.dto.PoolDTO;
+import jhipster.monolithic.angular.service.dto.IpPoolDTO;
 import jhipster.monolithic.angular.service.mapper.PoolMapper;
 import jhipster.monolithic.angular.web.rest.errors.ExceptionTranslator;
 
@@ -66,7 +66,7 @@ public class PoolResourceIntTest {
 
     private MockMvc restPoolMockMvc;
 
-    private Pool pool;
+    private IpPool pool;
 
     @Before
     public void setup() {
@@ -84,8 +84,8 @@ public class PoolResourceIntTest {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Pool createEntity(EntityManager em) {
-        Pool pool = new Pool()
+    public static IpPool createEntity(EntityManager em) {
+        IpPool pool = new IpPool()
             .name(DEFAULT_NAME);
         return pool;
     }
@@ -101,16 +101,16 @@ public class PoolResourceIntTest {
         int databaseSizeBeforeCreate = poolRepository.findAll().size();
 
         // Create the Pool
-        PoolDTO poolDTO = poolMapper.toDto(pool);
+        IpPoolDTO poolDTO = poolMapper.toDto(pool);
         restPoolMockMvc.perform(post("/api/pools")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(poolDTO)))
             .andExpect(status().isCreated());
 
         // Validate the Pool in the database
-        List<Pool> poolList = poolRepository.findAll();
+        List<IpPool> poolList = poolRepository.findAll();
         assertThat(poolList).hasSize(databaseSizeBeforeCreate + 1);
-        Pool testPool = poolList.get(poolList.size() - 1);
+        IpPool testPool = poolList.get(poolList.size() - 1);
         assertThat(testPool.getName()).isEqualTo(DEFAULT_NAME);
     }
 
@@ -121,7 +121,7 @@ public class PoolResourceIntTest {
 
         // Create the Pool with an existing ID
         pool.setId(1L);
-        PoolDTO poolDTO = poolMapper.toDto(pool);
+        IpPoolDTO poolDTO = poolMapper.toDto(pool);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restPoolMockMvc.perform(post("/api/pools")
@@ -130,7 +130,7 @@ public class PoolResourceIntTest {
             .andExpect(status().isBadRequest());
 
         // Validate the Pool in the database
-        List<Pool> poolList = poolRepository.findAll();
+        List<IpPool> poolList = poolRepository.findAll();
         assertThat(poolList).hasSize(databaseSizeBeforeCreate);
     }
 
@@ -142,14 +142,14 @@ public class PoolResourceIntTest {
         pool.setName(null);
 
         // Create the Pool, which fails.
-        PoolDTO poolDTO = poolMapper.toDto(pool);
+        IpPoolDTO poolDTO = poolMapper.toDto(pool);
 
         restPoolMockMvc.perform(post("/api/pools")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(poolDTO)))
             .andExpect(status().isBadRequest());
 
-        List<Pool> poolList = poolRepository.findAll();
+        List<IpPool> poolList = poolRepository.findAll();
         assertThat(poolList).hasSize(databaseSizeBeforeTest);
     }
 
@@ -197,10 +197,10 @@ public class PoolResourceIntTest {
         int databaseSizeBeforeUpdate = poolRepository.findAll().size();
 
         // Update the pool
-        Pool updatedPool = poolRepository.findOne(pool.getId());
+        IpPool updatedPool = poolRepository.findOne(pool.getId());
         updatedPool
             .name(UPDATED_NAME);
-        PoolDTO poolDTO = poolMapper.toDto(updatedPool);
+        IpPoolDTO poolDTO = poolMapper.toDto(updatedPool);
 
         restPoolMockMvc.perform(put("/api/pools")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -208,9 +208,9 @@ public class PoolResourceIntTest {
             .andExpect(status().isOk());
 
         // Validate the Pool in the database
-        List<Pool> poolList = poolRepository.findAll();
+        List<IpPool> poolList = poolRepository.findAll();
         assertThat(poolList).hasSize(databaseSizeBeforeUpdate);
-        Pool testPool = poolList.get(poolList.size() - 1);
+        IpPool testPool = poolList.get(poolList.size() - 1);
         assertThat(testPool.getName()).isEqualTo(UPDATED_NAME);
     }
 
@@ -220,7 +220,7 @@ public class PoolResourceIntTest {
         int databaseSizeBeforeUpdate = poolRepository.findAll().size();
 
         // Create the Pool
-        PoolDTO poolDTO = poolMapper.toDto(pool);
+        IpPoolDTO poolDTO = poolMapper.toDto(pool);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restPoolMockMvc.perform(put("/api/pools")
@@ -229,7 +229,7 @@ public class PoolResourceIntTest {
             .andExpect(status().isCreated());
 
         // Validate the Pool in the database
-        List<Pool> poolList = poolRepository.findAll();
+        List<IpPool> poolList = poolRepository.findAll();
         assertThat(poolList).hasSize(databaseSizeBeforeUpdate + 1);
     }
 
@@ -246,17 +246,17 @@ public class PoolResourceIntTest {
             .andExpect(status().isOk());
 
         // Validate the database is empty
-        List<Pool> poolList = poolRepository.findAll();
+        List<IpPool> poolList = poolRepository.findAll();
         assertThat(poolList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
     @Test
     @Transactional
     public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Pool.class);
-        Pool pool1 = new Pool();
+        TestUtil.equalsVerifier(IpPool.class);
+        IpPool pool1 = new IpPool();
         pool1.setId(1L);
-        Pool pool2 = new Pool();
+        IpPool pool2 = new IpPool();
         pool2.setId(pool1.getId());
         assertThat(pool1).isEqualTo(pool2);
         pool2.setId(2L);
@@ -268,10 +268,10 @@ public class PoolResourceIntTest {
     @Test
     @Transactional
     public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(PoolDTO.class);
-        PoolDTO poolDTO1 = new PoolDTO();
+        TestUtil.equalsVerifier(IpPoolDTO.class);
+        IpPoolDTO poolDTO1 = new IpPoolDTO();
         poolDTO1.setId(1L);
-        PoolDTO poolDTO2 = new PoolDTO();
+        IpPoolDTO poolDTO2 = new IpPoolDTO();
         assertThat(poolDTO1).isNotEqualTo(poolDTO2);
         poolDTO2.setId(poolDTO1.getId());
         assertThat(poolDTO1).isEqualTo(poolDTO2);

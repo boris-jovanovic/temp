@@ -19,8 +19,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="vLanId"><span jhiTranslate="ipamApp.vLan.vLanId">V Lan Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="vrfId"><span jhiTranslate="ipamApp.vLan.vrf">Vrf</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="vLanLinkId"><span jhiTranslate="ipamApp.vLan.vLanLink">V Lan Link</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="regionId"><span jhiTranslate="ipamApp.vLan.region">Region</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="domainId"><span jhiTranslate="ipamApp.vLan.domain">L2 Domain</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -44,8 +43,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="vLan.regionId">
-                        <a [routerLink]="['../region', vLan.regionId  ]" >{{vLan.regionId}}</a>
+                    <div *ngIf="vLan.domainId">
+                        <a [routerLink]="['../domain', vLan.domainId  ]" >{{vLan.domainId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

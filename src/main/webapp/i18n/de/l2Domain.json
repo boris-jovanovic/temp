@@ -1,0 +1,22 @@
+{
+    "ipamApp": {
+        "l2Domain" : {
+            "home": {
+                "title": "L2 Domains",
+                "createLabel": "L2 Domain erstellen",
+                "createOrEditLabel": "L2 Domain erstellen oder bearbeiten"
+            },
+            "created": "L2 Domain erstellt mit ID {{ param }}",
+            "updated": "L2 Domain aktualisiert mit ID {{ param }}",
+            "deleted": "L2 Domain gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll L2 Domain {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "L2 Domain"
+            },
+            "name": "Name",
+            "l2Domain": "L2 Domain"
+        }
+    }
+}

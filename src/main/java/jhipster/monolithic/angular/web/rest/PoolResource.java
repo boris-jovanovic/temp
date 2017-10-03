@@ -4,7 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import jhipster.monolithic.angular.service.PoolService;
 import jhipster.monolithic.angular.web.rest.util.HeaderUtil;
 import jhipster.monolithic.angular.web.rest.util.PaginationUtil;
-import jhipster.monolithic.angular.service.dto.PoolDTO;
+import jhipster.monolithic.angular.service.dto.IpPoolDTO;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -49,12 +49,12 @@ public class PoolResource {
      */
     @PostMapping("/pools")
     @Timed
-    public ResponseEntity<PoolDTO> createPool(@Valid @RequestBody PoolDTO poolDTO) throws URISyntaxException {
+    public ResponseEntity<IpPoolDTO> createPool(@Valid @RequestBody IpPoolDTO poolDTO) throws URISyntaxException {
         log.debug("REST request to save Pool : {}", poolDTO);
         if (poolDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new pool cannot already have an ID")).body(null);
         }
-        PoolDTO result = poolService.save(poolDTO);
+        IpPoolDTO result = poolService.save(poolDTO);
         return ResponseEntity.created(new URI("/api/pools/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -71,12 +71,12 @@ public class PoolResource {
      */
     @PutMapping("/pools")
     @Timed
-    public ResponseEntity<PoolDTO> updatePool(@Valid @RequestBody PoolDTO poolDTO) throws URISyntaxException {
+    public ResponseEntity<IpPoolDTO> updatePool(@Valid @RequestBody IpPoolDTO poolDTO) throws URISyntaxException {
         log.debug("REST request to update Pool : {}", poolDTO);
         if (poolDTO.getId() == null) {
             return createPool(poolDTO);
         }
-        PoolDTO result = poolService.save(poolDTO);
+        IpPoolDTO result = poolService.save(poolDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, poolDTO.getId().toString()))
             .body(result);
@@ -90,9 +90,9 @@ public class PoolResource {
      */
     @GetMapping("/pools")
     @Timed
-    public ResponseEntity<List<PoolDTO>> getAllPools(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<IpPoolDTO>> getAllPools(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Pools");
-        Page<PoolDTO> page = poolService.findAll(pageable);
+        Page<IpPoolDTO> page = poolService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pools");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -105,9 +105,9 @@ public class PoolResource {
      */
     @GetMapping("/pools/{id}")
     @Timed
-    public ResponseEntity<PoolDTO> getPool(@PathVariable Long id) {
+    public ResponseEntity<IpPoolDTO> getPool(@PathVariable Long id) {
         log.debug("REST request to get Pool : {}", id);
-        PoolDTO poolDTO = poolService.findOne(id);
+        IpPoolDTO poolDTO = poolService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(poolDTO));
     }
 

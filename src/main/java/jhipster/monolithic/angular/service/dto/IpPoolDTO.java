@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 /**
  * A DTO for the Pool entity.
  */
-public class PoolDTO implements Serializable {
+public class IpPoolDTO implements Serializable {
 
 	private Long id;
 
@@ -61,7 +61,7 @@ public class PoolDTO implements Serializable {
 			return false;
 		}
 
-		final PoolDTO poolDTO = (PoolDTO) o;
+		final IpPoolDTO poolDTO = (IpPoolDTO) o;
 		if (poolDTO.getId() == null || getId() == null) {
 			return false;
 		}

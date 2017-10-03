@@ -1,9 +1,9 @@
 package jhipster.monolithic.angular.service.impl;
 
 import jhipster.monolithic.angular.service.PoolService;
-import jhipster.monolithic.angular.domain.Pool;
+import jhipster.monolithic.angular.domain.IpPool;
 import jhipster.monolithic.angular.repository.PoolRepository;
-import jhipster.monolithic.angular.service.dto.PoolDTO;
+import jhipster.monolithic.angular.service.dto.IpPoolDTO;
 import jhipster.monolithic.angular.service.mapper.PoolMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,9 +38,9 @@ public class PoolServiceImpl implements PoolService{
      * @return the persisted entity
      */
     @Override
-    public PoolDTO save(PoolDTO poolDTO) {
+    public IpPoolDTO save(IpPoolDTO poolDTO) {
         log.debug("Request to save Pool : {}", poolDTO);
-        Pool pool = poolMapper.toEntity(poolDTO);
+        IpPool pool = poolMapper.toEntity(poolDTO);
         pool = poolRepository.save(pool);
         return poolMapper.toDto(pool);
     }
@@ -53,7 +53,7 @@ public class PoolServiceImpl implements PoolService{
      */
     @Override
     @Transactional(readOnly = true)
-    public Page<PoolDTO> findAll(Pageable pageable) {
+    public Page<IpPoolDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Pools");
         return poolRepository.findAll(pageable)
             .map(poolMapper::toDto);
@@ -67,9 +67,9 @@ public class PoolServiceImpl implements PoolService{
      */
     @Override
     @Transactional(readOnly = true)
-    public PoolDTO findOne(Long id) {
+    public IpPoolDTO findOne(Long id) {
         log.debug("Request to get Pool : {}", id);
-        Pool pool = poolRepository.findOne(id);
+        IpPool pool = poolRepository.findOne(id);
         return poolMapper.toDto(pool);
     }
 

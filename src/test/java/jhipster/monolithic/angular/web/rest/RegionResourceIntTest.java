@@ -2,7 +2,7 @@ package jhipster.monolithic.angular.web.rest;
 
 import jhipster.monolithic.angular.IpamApp;
 
-import jhipster.monolithic.angular.domain.Region;
+import jhipster.monolithic.angular.domain.IpRegion;
 import jhipster.monolithic.angular.repository.RegionRepository;
 import jhipster.monolithic.angular.service.RegionService;
 import jhipster.monolithic.angular.service.dto.RegionDTO;
@@ -66,7 +66,7 @@ public class RegionResourceIntTest {
 
     private MockMvc restRegionMockMvc;
 
-    private Region region;
+    private IpRegion region;
 
     @Before
     public void setup() {
@@ -84,8 +84,8 @@ public class RegionResourceIntTest {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Region createEntity(EntityManager em) {
-        Region region = new Region()
+    public static IpRegion createEntity(EntityManager em) {
+        IpRegion region = new IpRegion()
             .name(DEFAULT_NAME);
         return region;
     }
@@ -108,9 +108,9 @@ public class RegionResourceIntTest {
             .andExpect(status().isCreated());
 
         // Validate the Region in the database
-        List<Region> regionList = regionRepository.findAll();
+        List<IpRegion> regionList = regionRepository.findAll();
         assertThat(regionList).hasSize(databaseSizeBeforeCreate + 1);
-        Region testRegion = regionList.get(regionList.size() - 1);
+        IpRegion testRegion = regionList.get(regionList.size() - 1);
         assertThat(testRegion.getName()).isEqualTo(DEFAULT_NAME);
     }
 
@@ -130,7 +130,7 @@ public class RegionResourceIntTest {
             .andExpect(status().isBadRequest());
 
         // Validate the Region in the database
-        List<Region> regionList = regionRepository.findAll();
+        List<IpRegion> regionList = regionRepository.findAll();
         assertThat(regionList).hasSize(databaseSizeBeforeCreate);
     }
 
@@ -178,7 +178,7 @@ public class RegionResourceIntTest {
         int databaseSizeBeforeUpdate = regionRepository.findAll().size();
 
         // Update the region
-        Region updatedRegion = regionRepository.findOne(region.getId());
+        IpRegion updatedRegion = regionRepository.findOne(region.getId());
         updatedRegion
             .name(UPDATED_NAME);
         RegionDTO regionDTO = regionMapper.toDto(updatedRegion);
@@ -189,9 +189,9 @@ public class RegionResourceIntTest {
             .andExpect(status().isOk());
 
         // Validate the Region in the database
-        List<Region> regionList = regionRepository.findAll();
+        List<IpRegion> regionList = regionRepository.findAll();
         assertThat(regionList).hasSize(databaseSizeBeforeUpdate);
-        Region testRegion = regionList.get(regionList.size() - 1);
+        IpRegion testRegion = regionList.get(regionList.size() - 1);
         assertThat(testRegion.getName()).isEqualTo(UPDATED_NAME);
     }
 
@@ -210,7 +210,7 @@ public class RegionResourceIntTest {
             .andExpect(status().isCreated());
 
         // Validate the Region in the database
-        List<Region> regionList = regionRepository.findAll();
+        List<IpRegion> regionList = regionRepository.findAll();
         assertThat(regionList).hasSize(databaseSizeBeforeUpdate + 1);
     }
 
@@ -227,17 +227,17 @@ public class RegionResourceIntTest {
             .andExpect(status().isOk());
 
         // Validate the database is empty
-        List<Region> regionList = regionRepository.findAll();
+        List<IpRegion> regionList = regionRepository.findAll();
         assertThat(regionList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
     @Test
     @Transactional
     public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Region.class);
-        Region region1 = new Region();
+        TestUtil.equalsVerifier(IpRegion.class);
+        IpRegion region1 = new IpRegion();
         region1.setId(1L);
-        Region region2 = new Region();
+        IpRegion region2 = new IpRegion();
         region2.setId(region1.getId());
         assertThat(region1).isEqualTo(region2);
         region2.setId(2L);

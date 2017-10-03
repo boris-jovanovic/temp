@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 import jhipster.monolithic.angular.domain.IpV4Address;
-import jhipster.monolithic.angular.domain.Pool;
+import jhipster.monolithic.angular.domain.IpPool;
 import jhipster.monolithic.angular.domain.VLan;
 import jhipster.monolithic.angular.service.dto.IpV4AddressDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,7 +88,7 @@ public class IpV4AddressMapperImpl implements IpV4AddressMapper {
         if ( ipV4Address == null ) {
             return null;
         }
-        Pool pool = ipV4Address.getPool();
+        IpPool pool = ipV4Address.getPool();
         if ( pool == null ) {
             return null;
         }

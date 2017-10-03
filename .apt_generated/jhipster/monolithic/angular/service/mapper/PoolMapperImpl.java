@@ -3,9 +3,9 @@ package jhipster.monolithic.angular.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
-import jhipster.monolithic.angular.domain.Pool;
-import jhipster.monolithic.angular.domain.Region;
-import jhipster.monolithic.angular.service.dto.PoolDTO;
+import jhipster.monolithic.angular.domain.IpPool;
+import jhipster.monolithic.angular.domain.IpRegion;
+import jhipster.monolithic.angular.service.dto.IpPoolDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,13 +21,13 @@ public class PoolMapperImpl implements PoolMapper {
     private RegionMapper regionMapper;
 
     @Override
-    public List<PoolDTO> toDto(List<Pool> arg0) {
+    public List<IpPoolDTO> toDto(List<IpPool> arg0) {
         if ( arg0 == null ) {
             return null;
         }
 
-        List<PoolDTO> list = new ArrayList<PoolDTO>();
-        for ( Pool pool : arg0 ) {
+        List<IpPoolDTO> list = new ArrayList<IpPoolDTO>();
+        for ( IpPool pool : arg0 ) {
             list.add( toDto( pool ) );
         }
 
@@ -35,13 +35,13 @@ public class PoolMapperImpl implements PoolMapper {
     }
 
     @Override
-    public List<Pool> toEntity(List<PoolDTO> arg0) {
+    public List<IpPool> toEntity(List<IpPoolDTO> arg0) {
         if ( arg0 == null ) {
             return null;
         }
 
-        List<Pool> list = new ArrayList<Pool>();
-        for ( PoolDTO poolDTO : arg0 ) {
+        List<IpPool> list = new ArrayList<IpPool>();
+        for ( IpPoolDTO poolDTO : arg0 ) {
             list.add( toEntity( poolDTO ) );
         }
 
@@ -49,12 +49,12 @@ public class PoolMapperImpl implements PoolMapper {
     }
 
     @Override
-    public PoolDTO toDto(Pool pool) {
+    public IpPoolDTO toDto(IpPool pool) {
         if ( pool == null ) {
             return null;
         }
 
-        PoolDTO poolDTO_ = new PoolDTO();
+        IpPoolDTO poolDTO_ = new IpPoolDTO();
 
         poolDTO_.setRegionId( poolRegionId( pool ) );
         poolDTO_.setId( pool.getId() );
@@ -65,12 +65,12 @@ public class PoolMapperImpl implements PoolMapper {
     }
 
     @Override
-    public Pool toEntity(PoolDTO poolDTO) {
+    public IpPool toEntity(IpPoolDTO poolDTO) {
         if ( poolDTO == null ) {
             return null;
         }
 
-        Pool pool_ = new Pool();
+        IpPool pool_ = new IpPool();
 
         pool_.setRegion( regionMapper.fromId( poolDTO.getRegionId() ) );
         pool_.setId( poolDTO.getId() );
@@ -80,12 +80,12 @@ public class PoolMapperImpl implements PoolMapper {
         return pool_;
     }
 
-    private Long poolRegionId(Pool pool) {
+    private Long poolRegionId(IpPool pool) {
 
         if ( pool == null ) {
             return null;
         }
-        Region region = pool.getRegion();
+        IpRegion region = pool.getRegion();
         if ( region == null ) {
             return null;
         }

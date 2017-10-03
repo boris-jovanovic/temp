@@ -11,7 +11,7 @@ import { VLanPopupService } from './v-lan-popup.service';
 import { VLanService } from './v-lan.service';
 import { Vrf, VrfService } from '../vrf';
 import { VLanLink, VLanLinkService } from '../v-lan-link';
-import { Region, RegionService } from '../region';
+import { L2Domain, L2DomainService } from '../l2Domain';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -27,7 +27,7 @@ export class VLanDialogComponent implements OnInit {
 
     vlanlinks: VLanLink[];
 
-    regions: Region[];
+    l2Domains: L2Domain[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -35,7 +35,7 @@ export class VLanDialogComponent implements OnInit {
         private vLanService: VLanService,
         private vrfService: VrfService,
         private vLanLinkService: VLanLinkService,
-        private regionService: RegionService,
+        private l2DomainService: L2DomainService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -46,8 +46,8 @@ export class VLanDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.vrfs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.vLanLinkService.query()
             .subscribe((res: ResponseWrapper) => { this.vlanlinks = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.regionService.query()
-            .subscribe((res: ResponseWrapper) => { this.regions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.l2DomainService.query()
+            .subscribe((res: ResponseWrapper) => { this.l2Domains = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -92,7 +92,7 @@ export class VLanDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackRegionById(index: number, item: Region) {
+    trackL2DomainById(index: number, item: L2Domain) {
         return item.id;
     }
 }

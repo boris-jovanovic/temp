@@ -19,7 +19,7 @@
             "vrf": "Vrf",
             "vLan": "V Lan",
             "vLanLink": "V Lan Link",
-            "region": "Region"
+            "domain": "Domain"
         }
     }
 }
