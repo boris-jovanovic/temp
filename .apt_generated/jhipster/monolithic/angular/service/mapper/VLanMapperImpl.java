@@ -22,7 +22,7 @@ public class VLanMapperImpl implements VLanMapper {
     @Autowired
     private VLanLinkMapper vLanLinkMapper;
     @Autowired
-    private L2DomainMapper l2DomainMapper;
+    private VLanPoolMapper vLanPoolMapper;
 
     @Override
     public List<VLanDTO> toDto(List<VLan> arg0) {
@@ -61,7 +61,7 @@ public class VLanMapperImpl implements VLanMapper {
         VLanDTO vLanDTO_ = new VLanDTO();
 
         vLanDTO_.setVrfId( vLanVrfId( vLan ) );
-        vLanDTO_.setDomainId( vLanDomainId( vLan ) );
+        vLanDTO_.setVLanPoolId( vLanPoolId( vLan ) );
         vLanDTO_.setVLanLinkId( vLanVLanLinkId( vLan ) );
         vLanDTO_.setId( vLan.getId() );
         vLanDTO_.setVLanId( vLan.getVLanId() );
@@ -79,7 +79,7 @@ public class VLanMapperImpl implements VLanMapper {
 
         vLan_.setVrf( vrfMapper.fromId( vLanDTO.getVrfId() ) );
         vLan_.setVLanLink( vLanLinkMapper.fromId( vLanDTO.getVLanLinkId() ) );
-        vLan_.setDomain( l2DomainMapper.fromId( vLanDTO.getDomainId() ) );
+        vLan_.setVLanPool( vLanPoolMapper.fromId( vLanDTO.getVLanPoolId() ) );
         vLan_.setId( vLanDTO.getId() );
         vLan_.setVLanId( vLanDTO.getVLanId() );
 
@@ -102,16 +102,16 @@ public class VLanMapperImpl implements VLanMapper {
         return id;
     }
 
-    private Long vLanDomainId(VLan vLan) {
+    private Long vLanPoolId(VLan vLan) {
 
         if ( vLan == null ) {
             return null;
         }
-        L2Domain domain = vLan.getDomain();
-        if ( domain == null ) {
+        VLanPool vLanPool = vLan.getVLanPool();
+        if ( vLanPool == null ) {
             return null;
         }
-        Long id = domain.getId();
+        Long id = vLanPool.getId();
         if ( id == null ) {
             return null;
         }

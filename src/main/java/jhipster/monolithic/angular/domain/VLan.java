@@ -45,7 +45,7 @@ public class VLan implements Serializable {
 	private VLanLink vLanLink;
 
 	@ManyToOne
-	private L2Domain domain;
+	private VLanPool vLanPool;
 
 	// jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
 	public Long getId() {
@@ -120,17 +120,17 @@ public class VLan implements Serializable {
 		this.vLanLink = vLanLink;
 	}
 
-	public L2Domain getDomain() {
-		return domain;
+	public VLanPool getVLanPool() {
+		return vLanPool;
 	}
 
-	public VLan domain(final L2Domain domain) {
-		this.domain = domain;
+	public VLan vLanPool(final VLanPool vLanPool) {
+		this.vLanPool = vLanPool;
 		return this;
 	}
 
-	public void setDomain(final L2Domain domain) {
-		this.domain = domain;
+	public void setVLanPool(final VLanPool vLanPool) {
+		this.vLanPool = vLanPool;
 	}
 	// jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not
 	// remove

@@ -10,12 +10,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * A DTO for the VLan entity.
  */
-public class L2DomainDTO implements Serializable {
+public class VLanPoolDTO implements Serializable {
 
 	private Long id;
 
 	@NotNull
 	private String name;
+
+	private List<VLanDTO> vLans = new ArrayList<>();
+	
+	private Long domainId;
 
 	public Long getId() {
 		return id;
@@ -33,6 +37,23 @@ public class L2DomainDTO implements Serializable {
 		this.name = name;
 	}
 	
+	public List<VLanDTO> getVLans() {
+		return vLans;
+	}
+
+	@JsonProperty("vLans")
+	public void setVLans(final List<VLanDTO> vLans) {
+		this.vLans = vLans;
+	}
+	
+	public Long getDomainId() {
+		return domainId;
+	}
+	
+	public void setDomainId(Long domainId) {
+		this.domainId = domainId;
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o) {
@@ -42,7 +63,7 @@ public class L2DomainDTO implements Serializable {
 			return false;
 		}
 
-		final L2DomainDTO l2DomainDTO = (L2DomainDTO) o;
+		final VLanPoolDTO l2DomainDTO = (VLanPoolDTO) o;
 		if (l2DomainDTO.getId() == null || getId() == null) {
 			return false;
 		}

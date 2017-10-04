@@ -9,14 +9,14 @@ import jhipster.monolithic.angular.service.dto.VLanDTO;
 /**
  * Mapper for the entity VLan and its DTO VLanDTO.
  */
-@Mapper(componentModel = "spring", uses = { VrfMapper.class, VLanLinkMapper.class, L2DomainMapper.class, })
+@Mapper(componentModel = "spring", uses = { VrfMapper.class, VLanLinkMapper.class, VLanPoolMapper.class, })
 public interface VLanMapper extends EntityMapper<VLanDTO, VLan> {
 
 	@Mapping(source = "vrf.id", target = "vrfId")
 
 	@Mapping(source = "VLanLink.id", target = "VLanLinkId")
 
-	@Mapping(source = "domain.id", target = "domainId")
+	@Mapping(source = "VLanPool.id", target = "VLanPoolId")
 	VLanDTO toDto(VLan vLan);
 
 	@Mapping(source = "vrfId", target = "vrf")
@@ -24,7 +24,7 @@ public interface VLanMapper extends EntityMapper<VLanDTO, VLan> {
 
 	@Mapping(source = "VLanLinkId", target = "VLanLink")
 
-	@Mapping(source = "domainId", target = "domain")
+	@Mapping(source = "VLanPoolId", target = "VLanPool")
 	VLan toEntity(VLanDTO vLanDTO);
 
 	default VLan fromId(final Long id) {

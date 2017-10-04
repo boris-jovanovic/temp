@@ -14,8 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jhipster.monolithic.angular.domain.*;
 import jhipster.monolithic.angular.repository.L2DomainRepository;
+import jhipster.monolithic.angular.repository.VLanPoolRepository;
 import jhipster.monolithic.angular.service.L2DomainService;
+import jhipster.monolithic.angular.service.VLanPoolService;
 import jhipster.monolithic.angular.service.dto.L2DomainDTO;
+import jhipster.monolithic.angular.service.dto.VLanPoolDTO;
 import jhipster.monolithic.angular.service.mapper.*;
 
 /**
@@ -23,33 +26,42 @@ import jhipster.monolithic.angular.service.mapper.*;
  */
 @Service
 @Transactional
-public class L2DomainServiceImpl implements L2DomainService {
+public class VLanPoolServiceImpl implements VLanPoolService {
 
-	private final Logger log = LoggerFactory.getLogger(L2DomainServiceImpl.class);
+	private final Logger log = LoggerFactory.getLogger(VLanPoolServiceImpl.class);
 
 	private final L2DomainRepository l2DomainRepository;
 
-	private final L2DomainMapper l2DomainMapper;
+	private final VLanPoolMapper vLanPoolMapper;
 
-	public L2DomainServiceImpl(final L2DomainRepository l2DomainRepository, final L2DomainMapper l2DomainMapper) {
+	private final VLanMapper vLanMapper;
+
+	private VLanPoolRepository vLanPoolRepository;
+
+	public VLanPoolServiceImpl(final L2DomainRepository l2DomainRepository, final VLanPoolMapper vLanPoolMapper, final VLanMapper vLanMapper, final VLanPoolRepository vLanPoolRepository) {
 		this.l2DomainRepository = l2DomainRepository;
-		this.l2DomainMapper = l2DomainMapper;
+		this.vLanPoolMapper = vLanPoolMapper;
+		this.vLanMapper = vLanMapper;
+		this.vLanPoolRepository = vLanPoolRepository;
 	}
 
 	/**
 	 * Save a vLanLink.
 	 *
-	 * @param l2DomainDTO
+	 * @param vLanPoolDTO
 	 *            the entity to save
 	 * @return the persisted entity
 	 */
 	@Override
-	public L2DomainDTO save(final L2DomainDTO l2DomainDTO) {
-		log.debug("Request to save VLanLink : {}", l2DomainDTO);
+	public VLanPoolDTO save(VLanPoolDTO vLanPoolDTO) {
+		log.debug("Request to save VLanPoolLink : {}", vLanPoolDTO);
 
-		L2Domain l2Domain = l2DomainMapper.toEntity(l2DomainDTO);
-		l2Domain = l2DomainRepository.save(l2Domain);
-		return l2DomainMapper.toDto(l2Domain);
+		VLanPool vLanLink = vLanPoolMapper.toEntity(vLanPoolDTO);
+		if (vLanPoolDTO.getVLans() != null) {
+			vLanLink.setVLans(new HashSet<>(vLanMapper.toEntity(vLanPoolDTO.getVLans())));
+		}
+		vLanLink = vLanPoolRepository.save(vLanLink);
+		return vLanPoolMapper.toDto(vLanLink);
 	}
 
 	/**
@@ -59,9 +71,9 @@ public class L2DomainServiceImpl implements L2DomainService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Page<L2DomainDTO> findAll(Pageable pageable) {
+	public Page<VLanPoolDTO> findAll(Pageable pageable) {
 		log.debug("Request to get all VLanLinks");
-		return l2DomainRepository.findAll(pageable).map(l2DomainMapper::toDto);
+		return vLanPoolRepository.findAll(pageable).map(vLanPoolMapper::toDto);
 	}
 
 	/**
@@ -73,10 +85,10 @@ public class L2DomainServiceImpl implements L2DomainService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public L2DomainDTO findOne(final Long id) {
-		log.debug("Request to get VLanLink : {}", id);
-		final L2Domain l2Domain = l2DomainRepository.findOne(id);
-		return l2DomainMapper.toDto(l2Domain);
+	public VLanPoolDTO findOne(Long id) {
+		log.debug("Request to get VLanPool : {}", id);
+		final VLanPool vLanPool = vLanPoolRepository.findOne(id);
+		return vLanPoolMapper.toDto(vLanPool);
 	}
 
 	/**
@@ -88,6 +100,6 @@ public class L2DomainServiceImpl implements L2DomainService {
 	@Override
 	public void delete(final Long id) {
 		log.debug("Request to delete VLanLink : {}", id);
-		l2DomainRepository.delete(id);
+		vLanPoolRepository.delete(id);
 	}
 }

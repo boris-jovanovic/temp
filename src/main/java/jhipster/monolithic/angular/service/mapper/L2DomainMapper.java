@@ -12,9 +12,6 @@ import jhipster.monolithic.angular.service.dto.L2DomainDTO;
 @Mapper(componentModel = "spring", uses = {})
 public interface L2DomainMapper extends EntityMapper<L2DomainDTO, L2Domain> {
 
-	@Mapping(target = "L2Domains", ignore = true)
-	L2Domain toEntity(L2DomainDTO l2DomainDTO);
-
 	default L2Domain fromId(final Long id) {
 		if (id == null) {
 			return null;

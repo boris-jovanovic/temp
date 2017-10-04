@@ -12,7 +12,6 @@ import jhipster.monolithic.angular.service.dto.RegionDTO;
 @Mapper(componentModel = "spring", uses = {})
 public interface RegionMapper extends EntityMapper<RegionDTO, IpRegion> {
 
-	@Mapping(target = "VLans", ignore = true)
 	@Mapping(target = "pools", ignore = true)
 	IpRegion toEntity(RegionDTO regionDTO);
 

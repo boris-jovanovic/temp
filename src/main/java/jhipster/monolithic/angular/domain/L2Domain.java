@@ -24,11 +24,6 @@ public class L2Domain implements Serializable {
 	@Column(name = "name")
 	private String name;
 
-	@OneToMany(mappedBy = "domain")
-	@JsonIgnore
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private Set<VLan> vLans = new HashSet<>();
-	
 	public Long getId() {
 		return id;
 	}
@@ -48,31 +43,6 @@ public class L2Domain implements Serializable {
 
 	public void setName(final String name) {
 		this.name = name;
-	}
-	
-	public Set<VLan> getVLans() {
-		return vLans;
-	}
-
-	public L2Domain vLans(final Set<VLan> vLans) {
-		this.vLans = vLans;
-		return this;
-	}
-
-	public L2Domain addVLan(final VLan vLan) {
-		vLans.add(vLan);
-		vLan.setDomain(this);
-		return this;
-	}
-
-	public L2Domain removeVLan(final VLan vLan) {
-		vLans.remove(vLan);
-		vLan.setDomain(null);
-		return this;
-	}
-
-	public void setVLans(final Set<VLan> vLans) {
-		this.vLans = vLans;
 	}
 	
 }
