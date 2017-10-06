@@ -19,6 +19,8 @@ public class PoolMapperImpl implements PoolMapper {
 
     @Autowired
     private RegionMapper regionMapper;
+    @Autowired
+    private VrfMapper vrfMapper;
 
     @Override
     public List<IpPoolDTO> toDto(List<IpPool> arg0) {
@@ -60,6 +62,7 @@ public class PoolMapperImpl implements PoolMapper {
         poolDTO_.setId( pool.getId() );
         poolDTO_.setName( pool.getName() );
         poolDTO_.setSubnet( pool.getSubnet() );
+        poolDTO_.setVrfId(pool.getVrf().getId());
 
         return poolDTO_;
     }
@@ -76,6 +79,7 @@ public class PoolMapperImpl implements PoolMapper {
         pool_.setId( poolDTO.getId() );
         pool_.setName( poolDTO.getName() );
         pool_.setSubnet( poolDTO.getSubnet() );
+        pool_.setVrf( vrfMapper.fromId( poolDTO.getVrfId() ) );
 
         return pool_;
     }

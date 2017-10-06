@@ -7,6 +7,7 @@ export class Pool implements BaseEntity {
         public subnet?: string,
         public pools?: BaseEntity[],
         public regionId?: number,
+        public vrfId?: number,
     ) {
     }
 }

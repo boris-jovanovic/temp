@@ -43,6 +43,14 @@
                 <option [ngValue]="regionOption.id" *ngFor="let regionOption of regions; trackBy: trackRegionById">{{regionOption.name}}</option>
             </select>
         </div>
+        
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ipamApp.pool.vrf" for="field_vrf">Vrf</label>
+            <select class="form-control" id="field_vrf" name="vrf" [(ngModel)]="pool.vrfId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="vrfOption.id" *ngFor="let vrfOption of vrfs; trackBy: trackVrfById">{{vrfOption.vrfId}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

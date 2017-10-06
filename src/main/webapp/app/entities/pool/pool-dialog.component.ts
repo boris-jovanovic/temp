@@ -10,6 +10,7 @@ import { Pool } from './pool.model';
 import { PoolPopupService } from './pool-popup.service';
 import { PoolService } from './pool.service';
 import { Region, RegionService } from '../region';
+import { Vrf, VrfService } from '../vrf';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -22,12 +23,14 @@ export class PoolDialogComponent implements OnInit {
     isSaving: boolean;
 
     regions: Region[];
+    vrfs: Vrf[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private alertService: JhiAlertService,
         private poolService: PoolService,
         private regionService: RegionService,
+        private vrfService: VrfService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -36,6 +39,8 @@ export class PoolDialogComponent implements OnInit {
         this.isSaving = false;
         this.regionService.query()
             .subscribe((res: ResponseWrapper) => { this.regions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.vrfService.query()
+            .subscribe((res: ResponseWrapper) => { this.vrfs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -73,6 +78,10 @@ export class PoolDialogComponent implements OnInit {
     }
 
     trackRegionById(index: number, item: Region) {
+        return item.id;
+    }
+
+    trackVrfById(index: number, item: Vrf) {
         return item.id;
     }
 }
