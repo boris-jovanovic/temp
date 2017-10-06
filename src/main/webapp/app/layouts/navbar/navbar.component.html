@@ -54,6 +54,12 @@
                         </a>
                     </li>
                     <li>
+                        <a class="dropdown-item" routerLink="v-lan-pool" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.vLanPool">V Lan pool</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="dropdown-item" routerLink="v-lan-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.vLanLink">V Lan Link</span>

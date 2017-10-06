@@ -7,6 +7,7 @@ import { IpamPoolModule } from './pool/pool.module';
 import { IpamVLanLinkModule } from './v-lan-link/v-lan-link.module';
 import { IpamL2DomainModule } from './l2Domain/l2Domain.module';
 import { IpamRegionModule } from './region/region.module';
+import { IpamVLanPoolModule } from './v-lan-pool/v-lan-pool.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -18,6 +19,7 @@ import { IpamRegionModule } from './region/region.module';
         IpamVLanLinkModule,
         IpamL2DomainModule,
         IpamRegionModule,
+        IpamVLanPoolModule
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

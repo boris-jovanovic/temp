@@ -12,6 +12,7 @@
                 "ipV4Address": "Ip V 4 Address",
                 "pool": "Pool",
                 "vLanLink": "V Lan Link",
+                "vLanPool": "V Lan Pool",
                 "region": "Region",
                 "l2Domain": "L2 Domain",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"

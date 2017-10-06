@@ -11,6 +11,7 @@
                 "vLan": "V Lan",
                 "ipV4Address": "Ip V 4 Address",
                 "pool": "Pool",
+                "vLanPool": "V Lan Pool",
                 "vLanLink": "V Lan Link",
                 "region": "Region",
                 "l2Domain": "L2 Domain",

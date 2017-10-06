@@ -3,8 +3,8 @@ package jhipster.monolithic.angular.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
-import jhipster.monolithic.angular.domain.IpV4Address;
 import jhipster.monolithic.angular.domain.IpPool;
+import jhipster.monolithic.angular.domain.IpV4Address;
 import jhipster.monolithic.angular.domain.VLan;
 import jhipster.monolithic.angular.service.dto.IpV4AddressDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-09-26T10:35:16+0200",
+    date = "2017-10-04T14:33:00+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.13.0.v20170516-1929, environment: Java 1.8.0_144 (Oracle Corporation)"
 )
 @Component

@@ -1,0 +1,31 @@
+
+<div *ngIf="vLanPool">
+    <h2><span jhiTranslate="ipamApp.vLanPool.detail.title">V Lan pool</span> {{vLanPool.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ipamApp.vLanPool.name">V Lan pool name</span></dt>
+        <dd>
+            <span>{{vLanPool.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="ipamApp.vLanPool.domain">L2 Domain</span></dt>
+        <dd>
+            <div *ngIf="vLanPool.domainId">
+                <a [routerLink]="['/l2-domain', vLanPool.domainId]">{{vLanPool.domainId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'v-lan-pool/'+ vLanPool.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

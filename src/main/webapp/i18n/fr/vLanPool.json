@@ -1,0 +1,23 @@
+{
+    "ipamApp": {
+        "vLanPool" : {
+            "home": {
+                "title": "V Lan pools",
+                "createLabel": "Create a new V Lan pool",
+                "createOrEditLabel": "Create or edit a V Lan pool"
+            },
+            "created": "A new V Lan pool is created with identifier {{ param }}",
+            "updated": "A V Lan pool is updated with identifier {{ param }}",
+            "deleted": "A V Lan pool is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete V Lan pool {{ id }}?"
+            },
+            "detail": {
+                "title": "V Lan pool"
+            },
+            "name": "V Lan pool name",
+            "vLanPool": "V Lan pool",
+            "domain": "Domain"
+        }
+    }
+}

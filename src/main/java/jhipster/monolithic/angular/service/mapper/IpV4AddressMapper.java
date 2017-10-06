@@ -13,12 +13,10 @@ import jhipster.monolithic.angular.service.dto.IpV4AddressDTO;
 public interface IpV4AddressMapper extends EntityMapper<IpV4AddressDTO, IpV4Address> {
 
 	@Mapping(source = "VLan.id", target = "VLanId")
-
 	@Mapping(source = "pool.id", target = "poolId")
 	IpV4AddressDTO toDto(IpV4Address ipV4Address);
 
 	@Mapping(source = "VLanId", target = "VLan")
-
 	@Mapping(source = "poolId", target = "pool")
 	IpV4Address toEntity(IpV4AddressDTO ipV4AddressDTO);
 

@@ -3,15 +3,17 @@ package jhipster.monolithic.angular.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
-
-import jhipster.monolithic.angular.domain.*;
+import jhipster.monolithic.angular.domain.VLan;
+import jhipster.monolithic.angular.domain.VLanLink;
+import jhipster.monolithic.angular.domain.VLanPool;
+import jhipster.monolithic.angular.domain.Vrf;
 import jhipster.monolithic.angular.service.dto.VLanDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-09-26T15:06:52+0200",
+    date = "2017-10-04T14:37:09+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 3.13.0.v20170516-1929, environment: Java 1.8.0_144 (Oracle Corporation)"
 )
 @Component
@@ -61,7 +63,7 @@ public class VLanMapperImpl implements VLanMapper {
         VLanDTO vLanDTO_ = new VLanDTO();
 
         vLanDTO_.setVrfId( vLanVrfId( vLan ) );
-        vLanDTO_.setVLanPoolId( vLanPoolId( vLan ) );
+        vLanDTO_.setVLanPoolId( vLanVLanPoolId( vLan ) );
         vLanDTO_.setVLanLinkId( vLanVLanLinkId( vLan ) );
         vLanDTO_.setId( vLan.getId() );
         vLanDTO_.setVLanId( vLan.getVLanId() );
@@ -102,7 +104,7 @@ public class VLanMapperImpl implements VLanMapper {
         return id;
     }
 
-    private Long vLanPoolId(VLan vLan) {
+    private Long vLanVLanPoolId(VLan vLan) {
 
         if ( vLan == null ) {
             return null;

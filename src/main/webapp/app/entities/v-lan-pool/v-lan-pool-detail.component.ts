@@ -3,22 +3,22 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { L2Domain } from './l2Domain.model';
-import { L2DomainService } from './l2Domain.service';
+import { VLanPool } from './v-lan-pool.model';
+import { VLanPoolService } from './v-lan-pool.service';
 
 @Component({
-    selector: 'jhi-l2-Domain-detail',
-    templateUrl: './l2Domain-detail.component.html'
+    selector: 'jhi-v-lan-pool-detail',
+    templateUrl: './v-lan-pool-detail.component.html'
 })
-export class L2DomainDetailComponent implements OnInit, OnDestroy {
+export class VLanPoolDetailComponent implements OnInit, OnDestroy {
 
-    l2Domain: L2Domain;
+    vLanPool: VLanPool;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: JhiEventManager,
-        private l2DomainService: L2DomainService,
+        private vLanPoolService: VLanPoolService,
         private route: ActivatedRoute
     ) {
     }
@@ -27,12 +27,12 @@ export class L2DomainDetailComponent implements OnInit, OnDestroy {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
-        this.registerChangeInL2Domains();
+        this.registerChangeInVLanPools();
     }
 
     load(id) {
-        this.l2DomainService.find(id).subscribe((l2Domain) => {
-            this.l2Domain = l2Domain;
+        this.vLanPoolService.find(id).subscribe((vLanPool) => {
+            this.vLanPool = vLanPool;
         });
     }
     previousState() {
@@ -44,10 +44,10 @@ export class L2DomainDetailComponent implements OnInit, OnDestroy {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    registerChangeInL2Domains() {
+    registerChangeInVLanPools() {
         this.eventSubscriber = this.eventManager.subscribe(
-            'l2DomainListModification',
-            (response) => this.load(this.l2Domain.id)
+            'vLanPoolListModification',
+            (response) => this.load(this.vLanPool.id)
         );
     }
 }
