@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity VLan.
+    -->
+    <changeSet id="20171004-1" author="amodric">
+        
+		<dropForeignKeyConstraint baseTableName="v_lan" constraintName="fk_vlan_domain_id"/>
+		
+		<renameColumn tableName="v_lan" oldColumnName="domain_id" newColumnName="vLanPool_id"/>
+		
+        <createTable tableName="vlan_pool">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+		
+        <addForeignKeyConstraint baseColumnNames="vLanPool_id"
+                                 baseTableName="v_lan"
+                                 constraintName="fk_vlan_vLanPool_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vlan_pool"/>
+
+    </changeSet>
+</databaseChangeLog>

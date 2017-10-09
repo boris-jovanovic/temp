@@ -20,6 +20,8 @@ public class IpPoolDTO implements Serializable {
 
 	private Long regionId;
 
+	private Long vrfId;
+
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +52,14 @@ public class IpPoolDTO implements Serializable {
 
 	public void setSubnet(final String subnet) {
 		this.subnet = subnet;
+	}
+
+	public Long getVrfId() {
+		return vrfId;
+	}
+
+	public void setVrfId(Long vrfId) {
+		this.vrfId = vrfId;
 	}
 
 	@Override

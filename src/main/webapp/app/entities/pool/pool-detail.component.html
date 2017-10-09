@@ -18,6 +18,12 @@
                 <a [routerLink]="['/region', pool.regionId]">{{pool.regionId}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="ipamApp.pool.vrf">Vrf</span></dt>
+        <dd>
+            <div *ngIf="pool.vrfId">
+                <a [routerLink]="['/vrf', pool.vrfId]">{{pool.vrfId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

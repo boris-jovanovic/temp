@@ -51,6 +51,9 @@ public class IpPool implements Serializable {
 
 	@ManyToOne
 	private IpRegion region;
+	
+	@ManyToOne
+	private Vrf vrf;
 
 	// jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
 	public Long getId() {
@@ -120,6 +123,14 @@ public class IpPool implements Serializable {
 
 	public void setSubnet(final String subnet) {
 		this.subnet = subnet;
+	}
+
+	public Vrf getVrf() {
+		return vrf;
+	}
+
+	public void setVrf(Vrf vrf) {
+		this.vrf = vrf;
 	}
 
 	@Override

@@ -19,4 +19,8 @@
     
     <include file="config/liquibase/changelog/20170928_rename_tables.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170928_added_L2Domain.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170928_added_VLanPool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171004_added_Vrf_Ip_Pool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171006_added_L2DomainForeignKey_VLanPool.xml" relativeToChangelogFile="false"/>
+    
 </databaseChangeLog>

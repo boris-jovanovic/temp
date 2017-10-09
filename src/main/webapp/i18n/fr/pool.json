@@ -18,6 +18,7 @@
             "name": "Name",
             "subnet": "Subnet",
             "pool": "Pool",
+            "vrf": "Vrf",
             "region": "Region"
         }
     }

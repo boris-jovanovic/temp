@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity VLan.
+    -->
+    <changeSet id="20171006-1" author="bjovanovic">
+        
+        <addColumn tableName="vlan_pool">
+        	<column name="domain_id" type="bigint">
+        		<constraints nullable="false" />
+        	</column>
+        </addColumn>
+		<addForeignKeyConstraint constraintName="vlan_pool_domain" referencedTableName="l2_domain" baseColumnNames="domain_id" baseTableName="vlan_pool" referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>
