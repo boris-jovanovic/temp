@@ -23,12 +23,12 @@
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
-            <tr *ngFor="let vLanPool of vLans ;trackBy: trackId">
-                <td><a [routerLink]="['../v-lan', vLanPool.id ]">{{vLanPool.name}}</a></td>
+            <tr *ngFor="let vLanPool of vLanPools ;trackBy: trackId">
+                <td><a [routerLink]="['../v-lan-pool', vLanPool.id ]">{{vLanPool.name}}</a></td>
                 <td>{{vLanPool.id}}</td>
                 <td>
                     <div *ngIf="vLanPool.domainId">
-                        <a [routerLink]="['../domain', vLanPool.domainId  ]" >{{vLanPool.domainId}}</a>
+                        <a [routerLink]="['../l2Domain', vLanPool.domainId  ]" >{{vLanPool.domainId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

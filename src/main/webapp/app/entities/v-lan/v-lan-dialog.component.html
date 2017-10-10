@@ -40,7 +40,7 @@
         </div>
          -->
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ipamApp.vLan.l2Domain" for="field_l2-domain">L2 Domain</label>
+            <label class="form-control-label" jhiTranslate="ipamApp.vLan.domain" for="field_l2-domain">L2 Domain</label>
             <select class="form-control" id="field_l2-domain" name="l2-domain" [(ngModel)]="vLan.domainId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="l2DomainOption.id" *ngFor="let l2DomainOption of l2Domains; trackBy: trackL2DomainById">{{l2DomainOption.name}}</option>
